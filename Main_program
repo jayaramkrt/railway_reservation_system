@@ -1,0 +1,65 @@
+import java.util.*;
+public class Main {
+    public static void main(String []args)
+    {
+        Scanner in=new Scanner(System.in);
+        Reservation o=new Reservation();
+        int u=0;
+        while (u==0){
+        System.out.println("Enter login id and password to open");
+        System.out.println("Login ID");
+        String id=in.nextLine();
+        System.out.println("Pswd");
+        String pswd=in.nextLine();
+        if(id.equals("user")&&pswd.equals("12345")) {
+            while (true) {
+                int logout=0;
+                System.out.println("1. new booking 2.cancellation 3.availablity checking 4.Logout");
+                int c = in.nextInt();
+                switch (c) {
+                    case 1: {
+                        System.out.println("Enter your name");
+                        String name = in.next();
+                        System.out.println("Enter berth preference: L M U SL SU");
+                        String n = in.next();
+                        o.booknew(name, n);
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("enter PNR number");
+                        int i = in.nextInt();
+                        o.cancellation(i);
+                        break;
+
+                    }
+                    case 3: {
+                        System.out.println("seats available:" + o.availablity());
+                        break;
+                    }
+                    case 4:{
+                        logout=-1;
+                        break;
+                    }
+                }
+            if(logout==-1)
+            {
+                System.out.println("successfully log out from the system");
+                System.out.println("Press 1 to login again");
+                if(in.nextLine().equals("1"))
+                {
+                    u=0;
+                }
+                else
+                    u=-1;
+                break;
+            }
+
+            }
+        }
+        else{
+            System.out.println("Username password not match");
+
+        }}
+    }
+}
+
